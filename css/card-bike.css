@@ -1,0 +1,68 @@
+.cart-bike {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.card p {
+    text-align: left;
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.price-and-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.price {
+    text-align: left;
+}
+
+.price p {
+    margin: 0;
+}
+
+.price h3 {
+    margin: 0;
+}
+
+.card button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    /* margin-top: 10px; */
+}
+
+.card button:hover {
+    background-color: #222;
+}

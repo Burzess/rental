@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.banner-section {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.banner-section img {
+    width: 100%;
+    height: auto;
+}
+
+.banner-section .text {
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    text-align: center;
+    z-index: 1;
+}
+
+
+.form-section {
+    flex: 1;
+    padding: 50px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section form {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+}
+
+.form-section input {
+    width: 350px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 335px;
+}
+
+
+.form-section button.google-signin {
+    background-color: #ddd;
+    width: 350px;
+}
+
+.form-section form .button-signin {
+    color: #fff;
+    width: 358px;
+    margin-left: 20px;
+}
+
+button.google-signin img{
+    width: 20px;
+    margin-right: 10px;
+}
+
+.form-section p {
+    margin-top: 15px;
+}
+
+.form-section a {
+    color: #333;
+    text-decoration: underline;
+}
+
+.form-section a:hover {
+    color: #000;
+}
