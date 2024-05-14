@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -19,9 +23,11 @@ body {
 
 .banner-section {
     flex: 1;
-    overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .banner-section img {
@@ -34,13 +40,12 @@ body {
     font-weight: bold;
     position: absolute;
     top: 50%;
-    left: 29%;
+    left: 50%;
     transform: translate(-50%, -50%);
     color: #000;
     text-align: center;
     z-index: 1;
 }
-
 
 .form-section {
     flex: 1;
@@ -62,50 +67,41 @@ body {
     margin-bottom: 20px;
 }
 
-.form-section input {
-    width: 350px;
+.form-section input,
+.form-section button {
+    width: 100%;
+    max-width: 400px;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+.form-section input {
+    border: 1px solid #ccc;
+}
+
 .form-section button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #000;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 335px;
-}
-
-
 .form-section button.google-signin {
     background-color: #ddd;
-    width: 350px;
+    color: #000;
 }
 
-.form-section form .button-signin {
-    color: #fff;
-    width: 358px;
-    margin-left: 20px;
-}
-
-button.google-signin img{
+.form-section button.google-signin img {
     width: 20px;
     margin-right: 10px;
+}
+
+.form-section button.signin {
+    background-color: #333;
+    color: #fff;
 }
 
 .form-section p {
@@ -119,4 +115,46 @@ button.google-signin img{
 
 .form-section a:hover {
     color: #000;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .banner-section {
+        display: none;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-section form {
+        max-width: 100%;
+    }
+
+    .form-section input,
+    .form-section button {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section {
+        padding: 10px;
+    }
+
+    .form-section input,
+    .form-section button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .form-section h2 {
+        font-size: 24px;
+    }
 }

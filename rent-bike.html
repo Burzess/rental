@@ -4,32 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOKGOK - Rental Service</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/card-bike.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/card-bike.css">
+    <!-- <link rel="stylesheet" href="sl.css"> -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>GOKGOK</h1>
-        <nav>
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#products">Rental</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-        <a class="login" href="#provil"><img src="/img/luffy_face.png" alt=""></a>
-    </header>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                GOKGOK
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="rent-bike.html">Rental</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <a class="nav-link" href="user_dashboard.html">
+                    <img src="/img/luffy_face.png" alt="Profile" width="40" height="40" class="rounded-circle">
+                </a>
+            </div>
+        </div>
+    </nav>
     
     <div class="banner-section">
         <div class="image-wrapper">
-            <!-- <img src="https://static.wixstatic.com/media/84770f_abca8ce0bac24971a57d1f9d40b8238b~mv2.jpg/v1/fill/w_675,h_680,al_r,q_85,usm_0.66_1.00_0.01,enc_auto/84770f_abca8ce0bac24971a57d1f9d40b8238b~mv2.jpg" alt=""> -->
             <img src="/img/navigation.svg" alt="">
         </div>
         <div class="text">
-            <h1>Rent A Bike <br> Rent Your Freedom</h>
+            <h1>Rent A Bike <br> Rent Your Freedom</h1>
         </div>
     </div>
     <div class="search-filter-card">
@@ -49,111 +66,60 @@
     <main>
         <div class="cart-bike">
             <div class="card">
-                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" alt="CBR Motorcycle">
-                <h2>Beat</h2>
-                <p>Seats: 2</p>
-                <p>Horsepower: 500</p>
-                <p>Engine: 125cc</p>
-                <p>Front Brake: Disc</p>
-                <p>Gear Box: -</p>
-                <p>Overall Mileage: 40 Km/pl</p>
-                <br>
-                <div class="price-and-button">
+                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" class="card-img-top" alt="CBR Motorcycle">
+                <div class="card-body">
+                    <h5 class="card-title">Beat</h5>
+                    <p class="card-text">Seats: 2</p>
+                    <p class="card-text">Horsepower: 500</p>
+                    <p class="card-text">Engine: 125cc</p>
+                    <p class="card-text">Front Brake: Disc</p>
+                    <p class="card-text">Gear Box: -</p>
+                    <p class="card-text">Overall Mileage: 40 Km/pl</p>
+                </div>
+                <div class="price-button d-flex justify-content-between align-items-center">
                     <div class="price">
                         <p>Per Hari</p>
-                        <h3>Rp. 100.000</h3>
+                        <h5>Rp.100.000</h5>
                     </div>
-                    <button>Rent Bike</button>
+                        <button class="btn btn-primary" onclick="location.href='booking.html'">Rent Bike</button>
                 </div>
             </div>
             <div class="card">
-                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" alt="CBR Motorcycle">
-                <h2>Beat</h2>
-                <p>Seats: 2</p>
-                <p>Horsepower: 500</p>
-                <p>Engine: 125cc</p>
-                <p>Front Brake: Disc</p>
-                <p>Gear Box: -</p>
-                <p>Overall Mileage: 40 Km/pl</p>
-                <br>
-                <div class="price-and-button">
+                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" class="card-img-top" alt="CBR Motorcycle">
+                <div class="card-body">
+                    <h5 class="card-title">Beat</h5>
+                    <p class="card-text">Seats: 2</p>
+                    <p class="card-text">Horsepower: 500</p>
+                    <p class="card-text">Engine: 125cc</p>
+                    <p class="card-text">Front Brake: Disc</p>
+                    <p class="card-text">Gear Box: -</p>
+                    <p class="card-text">Overall Mileage: 40 Km/pl</p>
+                </div>
+                <div class="price-button d-flex justify-content-between align-items-center">
                     <div class="price">
                         <p>Per Hari</p>
-                        <h3>Rp. 100.000</h3>
+                        <h5>Rp.100.000</h5>
                     </div>
-                    <button>Rent Bike</button>
+                        <button class="btn btn-primary">Rent Bike</button>
                 </div>
             </div>
             <div class="card">
-                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" alt="CBR Motorcycle">
-                <h2>Beat</h2>
-                <p>Seats: 2</p>
-                <p>Horsepower: 500</p>
-                <p>Engine: 125cc</p>
-                <p>Front Brake: Disc</p>
-                <p>Gear Box: -</p>
-                <p>Overall Mileage: 40 Km/pl</p>
-                <br>
-                <div class="price-and-button">
-                    <div class="price">
-                        <p>Per Hari</p>
-                        <h3>Rp. 100.000</h3>
-                    </div>
-                    <button>Rent Bike</button>
+                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" class="card-img-top" alt="CBR Motorcycle">
+                <div class="card-body">
+                    <h5 class="card-title">Beat</h5>
+                    <p class="card-text">Seats: 2</p>
+                    <p class="card-text">Horsepower: 500</p>
+                    <p class="card-text">Engine: 125cc</p>
+                    <p class="card-text">Front Brake: Disc</p>
+                    <p class="card-text">Gear Box: -</p>
+                    <p class="card-text">Overall Mileage: 40 Km/pl</p>
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" alt="CBR Motorcycle">
-                <h2>Beat</h2>
-                <p>Seats: 2</p>
-                <p>Horsepower: 500</p>
-                <p>Engine: 125cc</p>
-                <p>Front Brake: Disc</p>
-                <p>Gear Box: -</p>
-                <p>Overall Mileage: 40 Km/pl</p>
-                <br>
-                <div class="price-and-button">
+                <div class="price-button d-flex justify-content-between align-items-center">
                     <div class="price">
                         <p>Per Hari</p>
-                        <h3>Rp. 100.000</h3>
+                        <h5>Rp.100.000</h5>
                     </div>
-                    <button>Rent Bike</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" alt="CBR Motorcycle">
-                <h2>Beat</h2>
-                <p>Seats: 2</p>
-                <p>Horsepower: 500</p>
-                <p>Engine: 125cc</p>
-                <p>Front Brake: Disc</p>
-                <p>Gear Box: -</p>
-                <p>Overall Mileage: 40 Km/pl</p>
-                <br>
-                <div class="price-and-button">
-                    <div class="price">
-                        <p>Per Hari</p>
-                        <h3>Rp. 100.000</h3>
-                    </div>
-                    <button>Rent Bike</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/uploads/product-draft/meta/ahm-gaul-sideview-deluxe-black-6-01022023-085314.png" alt="CBR Motorcycle">
-                <h2>Beat</h2>
-                <p>Seats: 2</p>
-                <p>Horsepower: 500</p>
-                <p>Engine: 125cc</p>
-                <p>Front Brake: Disc</p>
-                <p>Gear Box: -</p>
-                <p>Overall Mileage: 40 Km/pl</p>
-                <br>
-                <div class="price-and-button">
-                    <div class="price">
-                        <p>Per Hari</p>
-                        <h3>Rp. 100.000</h3>
-                    </div>
-                    <button>Rent Bike</button>
+                        <button class="btn btn-primary">Rent Bike</button>
                 </div>
             </div>
         </div>        

@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Supra",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    },
+    {
+        "name": "Supra",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    },
+    {
+        "name": "Beat",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    },
+    {
+        "name": "Beat",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    },
+    {
+        "name": "Beat",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    },
+    {
+        "name": "Beat",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    },
+    {
+        "name": "Beat",
+        "seats": "2",
+        "horsepower": "500",
+        "engine": "125cc",
+        "frontBrake": "Disc",
+        "gearBox": "-",
+        "overallMileage": "40 Km/pl",
+        "price": "Rp. 100.000",
+        "bra": "Honda"
+    }
+]

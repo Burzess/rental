@@ -8,10 +8,11 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 10%);
+    transform: translate(-50%, -20%);
     padding: 20px;
     border-radius: 10px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+
 }
 
 .search-filter-card .card {
