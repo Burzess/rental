@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.banner-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-section img {
+    width: 100%;
+    height: auto;
+}
+
+.banner-section .text {
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
+
+.form-section {
+    flex: 1;
+    padding: 50px;
+    background-color: #dfdfdf;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section form {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+}
+
+.form-section .input{
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.form-section input,
+.form-section button,
+.form-section textarea{
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.invalid-feedback {
+    color: #e3342f;
+    font-size: 0.875em;
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+.form-section input {
+    border: 1px solid #ccc;
+}
+
+.form-section button {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.form-section button.google-signin {
+    background-color: #ddd;
+    color: #000;
+}
+
+.form-section button.google-signin img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.form-section button.signin {
+    background-color: #333;
+    color: #fff;
+}
+
+.form-section p {
+    margin-top: 15px;
+}
+
+.form-section a {
+    color: #333;
+    text-decoration: underline;
+}
+
+.form-section a:hover {
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .banner-section {
+        display: none;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-section form {
+        max-width: 100%;
+    }
+
+    .form-section input,
+    .form-section button {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section {
+        padding: 10px;
+    }
+
+    .form-section input,
+    .form-section button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .form-section h2 {
+        font-size: 24px;
+    }
+}

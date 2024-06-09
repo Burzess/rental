@@ -1,0 +1,7 @@
+koneksi.php
+
+# Direktori dependency
+/node_modules/
+/database/
+*.pdf
+LICENSE

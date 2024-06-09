@@ -1,0 +1,127 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* background-color: #ddd; */
+}
+
+.dashboard {
+    background-color: #fff;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.user-stats {
+    align-items: center;
+    padding: 10px;
+    /* border-bottom: 1px solid #ddd; */
+    gap: 15px;
+    margin-top: 0;
+    /* background-color: #4dd2d6; */
+    height: 500px;
+}
+.stats{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+.total-order {
+    background-color: #28a745;
+    color: #ffffff;
+}
+.coupons {
+    background-color: #ffc107;
+    color: #000;
+}
+.cancel-order {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.profil{
+    height: 200px;
+    /* background-color: #007bff; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-email {
+    margin-left: 10px;
+}
+.card {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.navigation {
+    /* background-color: #1274b6; */
+    width: 300px;
+    height: 400px;
+    border-bottom: #000;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(89, 0, 255, 0.1); 
+}
+
+.nav-link {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    margin: auto;
+}
+.nav-link-dashboard {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+}
+
+.recent-orders {
+    border-radius: 5px;
+    /* background-color: #007bff; */
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.order-table th,
+.order-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.order-table th {
+    background-color: #f5f5f5;
+}
+
+.detail-profil{
+    box-shadow:  0 0 8px rgba(0, 0, 0, 0.1);
+    height: 320px;
+}
+
+.update{
+    margin-top: 10px;
+}
