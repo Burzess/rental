@@ -111,7 +111,6 @@ if (isset($_POST['submit'])) {
   <!-- /Header -->
 
   <!--Listing-Image-Slider-->
-
   <?php
   $vhid = intval($_GET['vhid']);
   $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.id=:vhid";
@@ -155,7 +154,6 @@ if (isset($_POST['submit'])) {
             <div class="col-md-3">
               <div class="price_info">
                 <p>Rp. <?php echo htmlentities($result->PricePerDay); ?> </p>Per Day
-
               </div>
             </div>
           </div>

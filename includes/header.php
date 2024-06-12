@@ -80,7 +80,7 @@
         </div>
         <div class="header_search">
           <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
-          <form action="search-carresult.php" method="post" id="header-search-form">
+          <form action="car-listing.php" method="post" id="header-search-form">
             <input type="text" name="brand" placeholder="Search..." class="form-control">
             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
           </form>
