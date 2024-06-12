@@ -153,7 +153,10 @@ ini_set('display_errors', 1);
                 </div>
               </div>
             <?php }
-          } ?>
+          } else {
+            echo "<h4>" . $brand . " not found</h4>";
+          }
+          ?>
         </div>
 
         <!--Side-Bar-->
