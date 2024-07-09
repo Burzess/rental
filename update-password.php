@@ -143,88 +143,81 @@ if (strlen($_SESSION['login']) == 0) {
       foreach ($results as $result) { ?>
         <section class="user_profile inner_pages">
           <div class="container">
-            <div class="user_profile_info gray-bg padding_4x4_40">
-              <div class="upload_user_logo"> <img src="assets/images/dealer-logo.jpg" alt="image">
-              </div>
+            <?php include ('user_profile_info.php'); ?>
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <?php include ('includes/sidebar.php'); ?>
+                <div class="col-md-6 col-sm-8">
+                  <div class="profile_wrap">
+                    <form name="chngpwd" method="post" onSubmit="return valid();">
 
-              <div class="dealer_info">
-                <h5><?php echo htmlentities($result->FullName); ?></h5>
-                <p><?php echo htmlentities($result->Address); ?><br>
-                  <?php echo htmlentities($result->City); ?>&nbsp;<?php echo htmlentities($result->Country);
-      }
-    } ?></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 col-sm-3">
-            <?php include ('includes/sidebar.php'); ?>
-            <div class="col-md-6 col-sm-8">
-              <div class="profile_wrap">
-                <form name="chngpwd" method="post" onSubmit="return valid();">
+                      <div class="gray-bg field-title">
+                        <h6>Update password</h6>
+                      </div>
+                      <?php if ($error) { ?>
+                        <div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div>
+                      <?php } else if ($msg) { ?>
+                          <div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+                      <div class="form-group">
+                        <label class="control-label">Current Password</label>
+                        <input class="form-control white_bg" id="password" name="password" type="password" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <input class="form-control white_bg" id="newpassword" type="password" name="newpassword" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label">Confirm Password</label>
+                        <input class="form-control white_bg" id="confirmpassword" type="password" name="confirmpassword"
+                          required>
+                      </div>
 
-                  <div class="gray-bg field-title">
-                    <h6>Update password</h6>
+                      <div class="form-group">
+                        <input type="submit" value="Update" name="update" id="submit" class="btn btn-block">
+                      </div>
+                    </form>
                   </div>
-                  <?php if ($error) { ?>
-                    <div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?>
-                      <div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
-                  <div class="form-group">
-                    <label class="control-label">Current Password</label>
-                    <input class="form-control white_bg" id="password" name="password" type="password" required>
-                  </div>
-                  <div cl <div class="form-group">
-                    <label class="control-label">Password</label>
-                    <input class="form-control white_bg" id="newpassword" type="password" name="newpassword" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">Confirm Password</label>
-                    <input class="form-control white_bg" id="confirmpassword" type="password" name="confirmpassword"
-                      required>
-                  </div>
-
-                  <div class="form-group">
-                    <input type="submit" value="Update" name="update" id="submit" class="btn btn-block">
-                  </div>
-                </form>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
     </section>
+    <?php }
+  } ?>
+
     <!--/Profile-setting-->
 
-    <<!--Footer -->
-      <?php include ('includes/footer.php'); ?>
-      <!-- /Footer-->
+    <!--Footer -->
+    <?php include ('includes/footer.php'); ?>
+    <!-- /Footer-->
 
-      <!--Back to top-->
-      <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-      <!--/Back to top-->
+    <!--Back to top-->
+    <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+    <!--/Back to top-->
 
-      <!--Login-Form -->
-      <?php include ('includes/login.php'); ?>
-      <!--/Login-Form -->
+    <!--Login-Form -->
+    <?php include ('includes/login.php'); ?>
+    <!--/Login-Form -->
 
-      <!--Register-Form -->
-      <?php include ('includes/registration.php'); ?>
+    <!--Register-Form -->
+    <?php include ('includes/registration.php'); ?>
 
-      <!--/Register-Form -->
+    <!--/Register-Form -->
 
-      <!--Forgot-password-Form -->
-      <?php include ('includes/forgotpassword.php'); ?>
-      <!--/Forgot-password-Form -->
+    <!--Forgot-password-Form -->
+    <?php include ('includes/forgotpassword.php'); ?>
+    <!--/Forgot-password-Form -->
 
-      <!-- Scripts -->
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script src="assets/js/interface.js"></script>
-      <!--Switcher-->
-      <script src="assets/switcher/js/switcher.js"></script>
-      <!--bootstrap-slider-JS-->
-      <script src="assets/js/bootstrap-slider.min.js"></script>
-      <!--Slider-JS-->
-      <script src="assets/js/slick.min.js"></script>
-      <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/interface.js"></script>
+    <!--Switcher-->
+    <script src="assets/switcher/js/switcher.js"></script>
+    <!--bootstrap-slider-JS-->
+    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <!--Slider-JS-->
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
 
   </body>
 

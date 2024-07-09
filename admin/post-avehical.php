@@ -13,6 +13,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$fueltype = $_POST['fueltype'];
 		$modelyear = $_POST['modelyear'];
 		$seatingcapacity = $_POST['seatingcapacity'];
+		$vehicletype = $_POST['vehicletype'];
 		$vimage1 = $_FILES["img1"]["name"];
 		$vimage2 = $_FILES["img2"]["name"];
 		$vimage3 = $_FILES["img3"]["name"];
@@ -36,7 +37,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		move_uploaded_file($_FILES["img4"]["tmp_name"], "img/vehicleimages/" . $_FILES["img4"]["name"]);
 		move_uploaded_file($_FILES["img5"]["tmp_name"], "img/vehicleimages/" . $_FILES["img5"]["name"]);
 
-		$sql = "INSERT INTO tblvehicles(VehiclesTitle,VehiclesBrand,VehiclesOverview,PricePerDay,FuelType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:vehicletitle,:brand,:vehicleoverview,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
+		$sql = "INSERT INTO tblvehicles(VehiclesTitle,VehiclesBrand,VehiclesOverview,PricePerDay,FuelType,ModelYear,SeatingCapacity,VehicleType,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:vehicletitle,:brand,:vehicleoverview,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vehicletype,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
 		$query->bindParam(':brand', $brand, PDO::PARAM_STR);
@@ -45,6 +46,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
 		$query->bindParam(':modelyear', $modelyear, PDO::PARAM_STR);
 		$query->bindParam(':seatingcapacity', $seatingcapacity, PDO::PARAM_STR);
+		$query->bindParam(':vehicletype', $vehicletype, PDO::PARAM_STR);
 		$query->bindParam(':vimage1', $vimage1, PDO::PARAM_STR);
 		$query->bindParam(':vimage2', $vimage2, PDO::PARAM_STR);
 		$query->bindParam(':vimage3', $vimage3, PDO::PARAM_STR);
@@ -71,7 +73,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		}
 	}
 
-?>
+	?>
 	<!doctype html>
 	<html lang="en" class="no-js">
 
@@ -197,15 +199,27 @@ if (strlen($_SESSION['alogin']) == 0) {
 															style="color:red">*</span></label>
 													<div class="col-sm-4">
 														<select class="selectpicker" name="fueltype" required>
-															<option value=""> Select </option>
-
-															<option value="Petrol">Petrol</option>
-															<option value="Diesel">Diesel</option>
-															<option value="CNG">CNG</option>
+															<option>Pilih Jenis Bahan Bakar</option>
+															<option value="Bensin">Bensin</option>
+															<option value="Pertalite">Pertalite</option>
+															<option value="Pertamax">Pertamax</option>
+															<option value="Pertamax Turbo">Pertamax Turbo</option>
+															<option value="Solar">Solar</option>
 														</select>
 													</div>
 												</div>
 
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Vehicle Type<span
+															style="color:red">*</span></label>
+													<div class="col-sm-4">
+														<select class="selectpicker" name="vehicletype" required>
+															<option value="">Pilih Tipe Kendaraan</option>
+															<option value="Mobil">Mobil</option>
+															<option value="Motor">Motor</option>
+														</select>
+													</div>
+												</div>
 
 												<div class="form-group">
 													<label class="col-sm-2 control-label">Model Year<span
@@ -261,15 +275,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 									</div>
 								</div>
 							</div>
-
-
 							<div class="row">
 								<div class="col-md-12">
 									<div class="panel panel-default">
 										<div class="panel-heading">Accessories</div>
 										<div class="panel-body">
-
-
 											<div class="form-group">
 												<div class="col-sm-3">
 													<div class="checkbox checkbox-inline">

@@ -1,0 +1,126 @@
+/*==========================
+	20. Coming-Soon-Page
+================================*/
+.coming_soon_bg {
+    background-image: url(../images/coming_soon_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.coming_soon_wrap .default-header {
+    padding: 20px 0;
+}
+
+.coming_soon_wrap h1 {
+    font-size: 60px;
+}
+
+.coming_soon_wrap h3 {
+    font-size: 26px;
+    line-height: 35px;
+}
+
+.coming_soon_content {
+    padding: 200px 0 80px;
+}
+
+.coming_soon_content img {
+    max-width: 100%;
+}
+
+.send_msg {
+    text-align: right;
+}
+
+.timer_countdown {
+    margin: 50px auto;
+}
+
+.countdown-amount:after {
+    content: "";
+    height: 100%;
+    width: 1px;
+    background: #444445;
+    position: absolute;
+    top: 0px;
+    right: -15px;
+}
+
+.countdown-amount:last-child:after {
+    margin: 0px;
+    width: 0px;
+}
+
+.countdown-amount:last-child {
+    margin: 0px;
+}
+
+.countdown-period {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 3px;
+    text-transform: capitalize;
+}
+
+.countdown-amount {
+    color: #fff;
+    font-size: 43px;
+    font-weight: 900;
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0 28px 0px auto;
+    padding: 20px 0px;
+    text-align: center;
+    width: auto;
+    position: relative;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.coming_soon_wrap footer {
+    background: #fff;
+    padding: 26px 0;
+    margin-bottom: 10px;
+}
+
+.coming_soon_wrap footer .copy-right {
+    color: #111;
+}
+
+.coming_soon_wrap .social-follow.footer-social a {
+    background: #191919 none repeat scroll 0 0;
+}
+
+#contact_form_popup .modal-dialog {
+    max-width: 450px;
+}
+
+#contact_form_popup .modal-content {
+    padding: 18px;
+    border-radius: 0px;
+}
+
+#contact_form_popup .modal-header {
+    border: 0px;
+    padding-bottom: 0px;
+}
+
+.coming_soon_wrap .footer_widget {
+    float: right;
+}
+
+.coming_soon_wrap .footer_widget ul li a {
+    color: #555;
+}
