@@ -130,16 +130,8 @@ if (strlen($_SESSION['login']) == 0) {
       foreach ($results as $result) { ?>
         <section class="user_profile inner_pages">
           <div class="container">
-            <div class="user_profile_info gray-bg padding_4x4_40">
-              <div class="upload_user_logo"> <img src="assets/images/dealer-logo.jpg" alt="image">
-              </div>
 
-              <div class="dealer_info">
-                <h5><?php echo htmlentities($result->FullName); ?></h5>
-                <p><?php echo htmlentities($result->Address); ?><br>
-                  <?php echo htmlentities($result->City); ?>&nbsp;<?php echo htmlentities($result->Country); ?></p>
-              </div>
-            </div>
+            <?php include ('user_profile_info.php'); ?>
 
             <div class="row">
               <div class="col-md-3 col-sm-3">
@@ -189,7 +181,7 @@ if (strlen($_SESSION['login']) == 0) {
                       <div class="form-group">
                         <label class="control-label">Country</label>
                         <input class="form-control white_bg" id="country" name="country"
-                          value="<?php echo htmlentities($result->City); ?>" type="text">
+                          value="<?php echo htmlentities($result->Country); ?>" type="text">
                       </div>
                       <div class="form-group">
                         <label class="control-label">City</label>

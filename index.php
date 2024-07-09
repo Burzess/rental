@@ -14,7 +14,7 @@ error_reporting(0);
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Car Rental Portal</title>
+  <title>Rental Kendaraan</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -44,6 +44,7 @@ error_reporting(0);
 
 <body>
 
+
   <!-- Start Switcher -->
   <?php include ('includes/colorswitcher.php'); ?>
   <!-- /Switcher -->
@@ -59,10 +60,10 @@ error_reporting(0);
         <div class="row">
           <div class="col-md-5 col-md-push-7">
             <div class="banner_content">
-              <h1>Find the right car for you.</h1>
-              <p>We have more than a thousand cars for you to choose. </p>
-              <a href="#" class="btn">Read More <span class="angle_arrow"><i class="fa fa-angle-right"
-                    aria-hidden="true"></i></span></a>
+              <h1>Temukan mobil yang tepat untuk Anda.</h1>
+              <p>Kami memiliki lebih dari seribu mobil untuk Anda pilih.</p>
+              <!-- <a href="#" class="btn">Read More <span class="angle_arrow"><i class="fa fa-angle-right"
+                    aria-hidden="true"></i></span></a> -->
             </div>
           </div>
         </div>
@@ -76,9 +77,8 @@ error_reporting(0);
   <section class="section-padding gray-bg">
     <div class="container">
       <div class="section-header text-center">
-        <h2>Find the Best <span>CarForYou</span></h2>
-        <p>Our Self-Drive cars come with all India permits, Road-Side Assistance (RSA), vehicle insurance and provision
-          of multiple parking sites across the city.</p>
+        <h2>Temukan Mobil Terbaik <span>Untuk Anda</span></h2>
+        <p>Rasakan kenyamanan berkendara tanpa batas di Surabaya dengan layanan sewa mobil kami. Kami menyediakan izin berkendara nasional, dukungan darurat 24 jam, asuransi menyeluruh, serta kemudahan akses parkir di lokasi-lokasi strategis.</p>
       </div>
       <div class="row">
 
@@ -91,44 +91,47 @@ error_reporting(0);
         <!-- Recently Listed New Cars -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="resentnewcar">
-
             <?php $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand";
             $query = $dbh->prepare($sql);
             $query->execute();
             $results = $query->fetchAll(PDO::FETCH_OBJ);
-            $cnt = 1;
-            if ($query->rowCount() > 0) {
-              foreach ($results as $result) {
-                ?>
-
-                <div class="col-list-3">
-                  <div class="recent-car-list">
-                    <div class="car-info-box"> <a
-                        href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
-                          src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive"
-                          alt="image"></a>
-                      <ul>
-                        <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
-                        <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
-                          Model</li>
-                        <li><i class="fa fa-user"
-                            aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> seats</li>
-                      </ul>
+            if ($query->rowCount() > 0) { ?>
+              <div id="recent-vehicle-slider" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <?php $cnt = 0;
+                  foreach ($results as $result) { ?>
+                    <div class="item <?php echo ($cnt == 0) ? 'active' : ''; ?>">
+                      <div class="col-list-3">
+                        <div class="recent-car-list">
+                          <div class="car-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image"></a>
+                            <ul>
+                              <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
+                              <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> Model</li>
+                              <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> seats</li>
+                            </ul>
+                          </div>
+                          <div class="car-title-m">
+                            <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>, <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
+                            <span class="price">Rp. <?php echo htmlentities($result->PricePerDay); ?> /Day</span>
+                          </div>
+                          <div class="inventory_info_m">
+                            <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="car-title-m">
-                      <h6><a
-                          href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
-                          , <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                      <span class="price">Rp. <?php echo htmlentities($result->PricePerDay); ?> /Day</span>
-                    </div>
-                    <div class="inventory_info_m">
-                      <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
-                    </div>
-                  </div>
+                  <?php $cnt++; } ?>
                 </div>
-              <?php }
-            } ?>
-
+                <!-- Controls -->
+                <a class="left carousel-control" href="#recent-vehicle-slider" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#recent-vehicle-slider" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+              </div>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -197,8 +200,6 @@ error_reporting(0);
           $cnt = 1;
           if ($query->rowCount() > 0) {
             foreach ($results as $result) { ?>
-
-
               <div class="testimonial-m">
                 <div class="testimonial-img"> <img src="assets/images/cat-profile.png" alt="" /> </div>
                 <div class="testimonial-content">
@@ -210,9 +211,6 @@ error_reporting(0);
               </div>
             <?php }
           } ?>
-
-
-
         </div>
       </div>
     </div>

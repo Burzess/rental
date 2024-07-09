@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include ('includes/config.php');
@@ -153,7 +154,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="col-md-3">
               <div class="price_info">
-                <p>Rp. <?php echo htmlentities($result->PricePerDay); ?> </p>Per Day
+                <p>Rp. <?php echo number_format(htmlentities($result->PricePerDay), 0, ',', '.'); ?> </p>Per Hari
               </div>
             </div>
           </div>
@@ -170,7 +171,6 @@ if (isset($_POST['submit'])) {
                     <h5><?php echo htmlentities($result->FuelType); ?></h5>
                     <p>Fuel Type</p>
                   </li>
-
                   <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
                     <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
                     <p>Seats</p>
@@ -196,145 +196,10 @@ if (isset($_POST['submit'])) {
                       <p><?php echo htmlentities($result->VehiclesOverview); ?></p>
                     </div>
 
-
-                    <!-- Accessories -->
-                    <div role="tabpanel" class="tab-pane" id="accessories">
-                      <!--Accessories-->
-                      <table>
-                        <thead>
-                          <tr>
-                            <th colspan="2">Accessories</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Air Conditioner</td>
-                            <?php if ($result->AirConditioner == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>AntiLock Braking System</td>
-                            <?php if ($result->AntiLockBrakingSystem == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Power Steering</td>
-                            <?php if ($result->PowerSteering == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-
-                          <tr>
-
-                            <td>Power Windows</td>
-
-                            <?php if ($result->PowerWindows == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>CD Player</td>
-                            <?php if ($result->CDPlayer == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Leather Seats</td>
-                            <?php if ($result->LeatherSeats == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Central Locking</td>
-                            <?php if ($result->CentralLocking == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Power Door Locks</td>
-                            <?php if ($result->PowerDoorLocks == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-                          <tr>
-                            <td>Brake Assist</td>
-                            <?php if ($result->BrakeAssist == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Driver Airbag</td>
-                            <?php if ($result->DriverAirbag == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Passenger Airbag</td>
-                            <?php if ($result->PassengerAirbag == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                          <tr>
-                            <td>Crash Sensor</td>
-                            <?php if ($result->CrashSensor == 1) {
-                              ?>
-                              <td><i class="fa fa-check" aria-hidden="true"></i></td>
-                            <?php } else { ?>
-                              <td><i class="fa fa-close" aria-hidden="true"></i></td>
-                            <?php } ?>
-                          </tr>
-
-                        </tbody>
-                      </table>
-                    </div>
+                    <?php include('accessories.php'); ?>
+                    
                   </div>
                 </div>
-
               </div>
             <?php }
   } ?>
@@ -343,7 +208,6 @@ if (isset($_POST['submit'])) {
 
         <!--Side-Bar-->
         <aside class="col-md-3">
-
           <div class="share_vehicle">
             <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="#"><i
                   class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-linkedin-square"
@@ -354,17 +218,14 @@ if (isset($_POST['submit'])) {
             <div class="widget_heading">
               <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
             </div>
-            <form method="post">
+            <form method="post" onsubmit="event.preventDefault(); openConfirmationModal();">
               <div class="form-group">
-                <input type="text" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)"
+                <input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)"
                   oninput="calculateTotalPrice()" required>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)"
+                <input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)"
                   oninput="calculateTotalPrice()" required>
-              </div>
-              <div class="form-group">
-                <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
               </div>
               <input type="hidden" id="totalPriceInput" name="totalPrice" value="<?php echo $result->PricePerDay; ?>">
               <div class="form-group">
@@ -372,7 +233,7 @@ if (isset($_POST['submit'])) {
               </div>
               <?php if ($_SESSION['login']) { ?>
                 <div class="form-group">
-                  <input type="submit" class="btn" name="submit" value="Book Now">
+                  <button type="button" class="btn" onclick="openConfirmationModal()">Pesan Sekarang</button>
                 </div>
               <?php } else { ?>
                 <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login For
@@ -380,26 +241,74 @@ if (isset($_POST['submit'])) {
               <?php } ?>
             </form>
           </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+            aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi Pesanan</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you want to book the vehicle from <span id="confirmFromDate"></span> to <span
+                    id="confirmToDate"></span>?
+                  <br>
+                  Total Price: <span id="confirmTotalPrice"></span>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" onclick="submitBookingForm()">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+
+          </script>
         </aside>
         <!--/Side-Bar-->
       </div>
 
       <script>
+        function openConfirmationModal() {
+          var fromDate = document.getElementsByName('fromdate')[0].value;
+          var toDate = document.getElementsByName('todate')[0].value;
+          var totalPrice = document.getElementById('totalPriceInput').value;
+
+          document.getElementById('confirmFromDate').innerText = fromDate;
+          document.getElementById('confirmToDate').innerText = toDate;
+          document.getElementById('confirmTotalPrice').innerText = 'Rp. ' + parseInt(totalPrice).toLocaleString('id-ID');
+
+          $('#confirmationModal').modal('show');
+        }
+
+        function submitBookingForm() {
+          document.querySelector('form').submit();
+        }
+
         function calculateTotalPrice() {
           var fromDate = document.getElementsByName('fromdate')[0].value;
           var toDate = document.getElementsByName('todate')[0].value;
-          var pricePerDay = parseFloat(document.getElementById('totalPriceInput').value);
+          var pricePerDay = <?php echo $result->PricePerDay; ?>;
 
           if (fromDate && toDate && !isNaN(pricePerDay)) {
             var startDate = new Date(fromDate.split('/').reverse().join('-'));
             var endDate = new Date(toDate.split('/').reverse().join('-'));
             var timeDiff = endDate - startDate;
-            var dayDiff = timeDiff / (1000 * 3600 * 24);
+            var dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            console.log('timeDiff:', timeDiff);
+            console.log('dayDiff:', dayDiff);
 
             if (dayDiff > 0) {
               var totalPrice = dayDiff * pricePerDay;
-              document.getElementById('totalPrice').innerText = 'Total Price: ' + totalPrice.toFixed(2);
-              document.getElementById('totalPriceInput').value = totalPrice.toFixed(2);
+              document.getElementById('totalPrice').innerText = 'Total Price: Rp. ' + totalPrice.toLocaleString('id-ID');
+              document.getElementById('totalPriceInput').value = totalPrice;
             } else {
               document.getElementById('totalPrice').innerText = 'Total Price: Invalid date range';
             }

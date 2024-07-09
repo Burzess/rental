@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_id'])) {
                         <label for="email">Alamat Email</label>
                         <input type='email' class='form-control' id='email' placeholder='Masukkan Email'>
                     </div>
-                </div>
+                </div> 
 
                 <div class='form-row'>
                     <div class='form-group col-md-6'>

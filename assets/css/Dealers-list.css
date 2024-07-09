@@ -1,0 +1,35 @@
+/*==========================
+	18. Dealers-list
+================================*/
+.dealers_list_wrap {
+    margin: 0 auto 50px;
+}
+
+.dealers_listing {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 0 0px 20px;
+    margin: 0 auto 20px;
+}
+
+.dealers_listing .dealer_logo {
+    padding: 12px;
+    width: 100%;
+}
+
+.dealers_listing .dealer_info {
+    width: 100%;
+}
+
+.dealers_listing .dealer_info h5 a {
+    color: #111;
+}
+
+.view_profile {
+    padding: 12px 0;
+    text-align: right;
+}
+
+.view_profile p {
+    margin: 10px 0;
+    font-size: 18px;
+}

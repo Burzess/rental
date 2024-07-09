@@ -1,0 +1,178 @@
+/*=========================
+	12. About-Us-Page
+================================*/
+.aboutus_page {
+    background-image: url(../images/aboutus-page-header-img.jpg);
+}
+
+.about_img {
+    background: #000 none repeat scroll 0 0;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.about_img img {
+    width: 100%;
+    border-radius: 50%;
+    transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+}
+
+.about_img:hover img {
+    opacity: 0.5;
+}
+
+.about_content {
+    padding: 20px 0;
+}
+
+.about_content h3 {
+    margin-top: 25px;
+}
+
+
+/*-------------------------------
+      12.1. Why-Choose-Us-Section
+  ----------------------------------------*/
+.video_box iframe {
+    width: 100%;
+    border: 0px;
+    height: 360px;
+}
+
+.listing_box {
+    margin: 0 auto 30px;
+}
+
+.listing_box h5 {
+    margin-bottom: 8px;
+}
+
+.listing_box p {
+    list-style: 24px;
+}
+
+
+/*---------------------------------
+      12.2. Meet-the-Team-Section
+  ---------------------------------------*/
+.team_member {
+    background: #ffffff none repeat scroll 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.team_img {
+    position: relative;
+    overflow: hidden;
+}
+
+.team_img img {
+    width: 100%;
+}
+
+.team_info {
+    text-align: center;
+    padding: 20px;
+}
+
+.team_info h6,
+.team_info p {
+    margin: 0 0 4px;
+}
+
+.team_more_info {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+}
+
+.team_more_info::after {
+    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.team_member:hover .team_more_info {
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+}
+
+.info_wrap {
+    position: relative;
+    top: 50%;
+    vertical-align: middle;
+    width: 100%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    z-index: 1;
+}
+
+.team_more_info ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.team_more_info ul li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+}
+
+.team_more_info ul li a {
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #fff;
+    text-align: center;
+    line-height: 35px;
+    color: #111;
+    font-size: 20px;
+}
+
+.team_more_info ul li a i {
+    margin: 0 auto;
+}
+
+.team_more_info ul li a:hover {
+    color: #fff;
+}
+
+.team_more_info p,
+.team_more_info p a {
+    color: #fff;
+}
+
+.team_more_info p span {
+    display: block;
+    font-weight: 700;
+}

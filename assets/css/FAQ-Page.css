@@ -1,0 +1,25 @@
+/*=================
+	11. FAQ-Page
+===========================*/
+.faq_category {
+    position: relative;
+    text-align: center;
+    padding: 50px;
+    margin: 0 auto 20px;
+}
+
+.faq_text {
+    padding: 20px 0;
+}
+
+.knowledge_base_faq {
+    background: rgba(0, 0, 0, 0) url("../images/knowledge_base_bg.jpg") no-repeat scroll 0 0 / cover;
+}
+
+.about_services_faq {
+    background: rgba(0, 0, 0, 0) url("../images/about_services_faq_bg.jpg") no-repeat scroll 0 0 / cover;
+}
+
+.support_faq {
+    background: rgba(0, 0, 0, 0) url("../images/support_faq_bg.jpg") no-repeat scroll 0 0 / cover;
+}

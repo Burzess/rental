@@ -1,0 +1,386 @@
+/*=======================
+	 4. Home-Page-2
+================================*/
+
+
+/*-----------------
+	4.1. Header
+------------------------*/
+.header_style2 {
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+}
+
+.header_style2 #navigation_bar {
+    background: #fff;
+    text-align: center;
+}
+
+.header_style2 .navbar-default .navbar-nav>li {
+    margin: 0;
+}
+
+.header_style2 .navbar-default .navbar-nav>li>a {
+    color: #111;
+    padding: 30px 18px;
+}
+
+.header_style2 .user_login i {
+    font-size: 24px;
+    color: #111;
+}
+
+.header_style2 .logo {
+    margin: 20px 0;
+}
+
+.header_style2 .user_login {
+    margin: 29px 10px 20px 0;
+}
+
+.header_style2 .login_btn {
+    margin: 28px 0;
+}
+
+.header_style2 .navbar-default .navbar-nav>li.dropdown>a::after {
+    right: 0;
+}
+
+.header_style2 .navbar-nav>li,
+.header_style2 .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.header_style2 .navbar-default .navbar-nav>li.dropdown>a::after {
+    top: 34%;
+}
+
+@media (min-width:992px) {
+    .header_style2 #navigation.collapse.navbar-collapse {
+        display: inline-block !important;
+        float: none;
+        width: auto !important;
+    }
+
+    .header_style2 {
+        padding: 6px 0;
+    }
+
+}
+
+.header_style2.nav-stacked.affix {
+    padding: 0px;
+}
+
+
+
+/*--------------------
+      4.2. Banner
+  ---------------------------*/
+#banner2 {
+    position: relative;
+}
+
+#banner2 h3 {
+    font-weight: 300;
+    margin: 0 auto 30px;
+}
+
+.bannre-item {
+    position: relative;
+    padding: 150px 0 250px;
+    background-repeat: no-repeat;
+}
+
+.banner_text {
+    position: relative;
+    z-index: 1;
+}
+
+#banner2 .item:after {
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#banner2 .carousel-caption {
+    bottom: inherit;
+    left: 20%;
+    padding-bottom: 30px;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#banner2 .carousel-control {
+    width: 10%;
+}
+
+.carousel-control .icon-next,
+.carousel-control .icon-prev {
+    border: rgba(255, 255, 255, 0.5) solid 1px;
+    line-height: 22px;
+}
+
+
+/*--------------------
+      4.13. Filter-Form
+  ---------------------------*/
+#filter_form2 {
+    margin: -120px 0 -20px;
+    position: relative;
+    z-index: 1;
+}
+
+.main_bg {
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+}
+
+.main_bg .btn {
+    background: #111;
+}
+
+.main_bg .btn:hover {
+    background: #000;
+}
+
+#filter_form2 .form-label {
+    color: #ffffff;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+form .slider.slider-horizontal {
+    width: 100%;
+}
+
+#filter_form2 .slider.slider-horizontal .slider-track {
+    background-image: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#filter_form2 .slider-handle {
+    background-color: #ffffff;
+    background-image: none;
+}
+
+#filter_form2 .slider-selection {
+    background-color: #fff;
+}
+
+
+
+/*-----------------
+      4.4. About-us
+  ------------------------*/
+.about_info {
+    background: #ffffff none repeat scroll 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 40px 20px;
+    text-align: center;
+    transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+}
+
+.about_info:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.about_info .icon_box {
+    float: none;
+    margin: 0 auto 25px;
+}
+
+.about_info h5 {
+    margin: 0 auto 10px;
+}
+
+
+/*-----------------
+      4.5. Fan-Facts
+  ------------------------*/
+#fun-facts {
+    position: relative;
+}
+
+.vc_row {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vc_col {
+    display: flex;
+}
+
+.fact_m {
+    display: block;
+    margin: 0 30px 0 16%;
+    width: auto;
+}
+
+.fact_m ul {
+    margin: 0px;
+    padding: 40px 0 0;
+    clear: both;
+}
+
+.fact_m ul li p {
+    margin: 0px;
+}
+
+.fact_m ul li h2 {
+    margin: 0px;
+}
+
+.fact_m ul li {
+    list-style: none;
+    float: left;
+    border: rgba(255, 255, 255, 0.2) solid 1px;
+    padding: 30px 18px;
+    width: 48%;
+    margin: 0 2% 12px 0;
+}
+
+.fact_m ul li i {
+    font-size: 65px;
+    float: left;
+    margin: 0 10px 20px 0;
+}
+
+.facts_section_bg {
+    background: rgba(0, 0, 0, 0) url("../images/facts_bg.jpg") no-repeat scroll 0 0 / cover;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+
+
+/*-----------------
+      4.6. Our-Services
+  ------------------------*/
+.services_info {
+    overflow: hidden;
+    margin: 30px auto 0;
+}
+
+.our_services {
+    display: block;
+    margin: 0 16% 0 40px;
+    width: auto;
+}
+
+.services_info h4 {
+    margin: 10px auto;
+}
+
+.services_info h4 a {
+    color: #fff;
+}
+
+.services_info p {
+    line-height: 22px;
+}
+
+.icon_box {
+    float: left;
+    width: 99px;
+    height: 99px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 90px;
+    border-radius: 50%;
+    border: rgba(255, 255, 255, 0.2) solid 1px;
+    margin: 0 25px 25px 0;
+}
+
+
+
+/*-----------------
+      4.7. Testimonial
+  ------------------------*/
+#testimonial {
+    position: relative;
+}
+
+.testimonial_wrap {
+    background: #ffffff none repeat scroll 0 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    margin: 15px;
+    padding: 40px;
+    text-align: center;
+    overflow: visible;
+    position: relative;
+    transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+}
+
+.testimonial_wrap:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial_wrap .testimonial-img {
+    float: none;
+    height: 135px;
+    left: inherit;
+    margin: 0 auto 20px;
+    position: relative;
+    right: inherit;
+    top: inherit;
+    width: 135px;
+}
+
+.testimonial_wrap .testimonial-heading::after {
+    display: none;
+}
+
+.testimonial_wrap::after {
+    color: rgba(0, 0, 0, 0.1);
+    content: "";
+    font-family: fontawesome;
+    font-size: 100px;
+    left: 25px;
+    line-height: 28px;
+    position: absolute;
+    top: 60px;
+}
+
+.testimonial_wrap .testimonial-heading {
+    padding: 0px;
+    margin: 0 auto 20px;
+}
+
+
+
+/*-----------------
+      4.8. Help
+  ------------------------*/
+#help {
+    background-image: url("../images/help_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+}

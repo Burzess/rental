@@ -1,0 +1,62 @@
+/*===========================
+	8. Listing-grid-Style
+==================================*/
+.grid_listing .product-listing-m {
+    margin: 0 -15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 40px;
+}
+
+.grid_listing .product-listing-img,
+.grid_listing .product-listing-content {
+    float: none;
+    width: 100%;
+}
+
+.grid_listing .product-listing-img img {
+    width: 100%;
+}
+
+.grid_listing .product-listing-content {
+    padding: 20px 20px 0;
+}
+
+.grid_listing .product-listing-content h5 {
+    line-height: 26px;
+    margin: 0 auto 20px
+}
+
+.grid_listing .product-listing-content .list-price {
+    font-size: 18px;
+    color: #555;
+    font-weight: 900;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+.grid_listing .product-listing-content .car-location {
+    float: right;
+}
+
+.grid_listing .product-listing-content ul.features_list {
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #e1e0e0;
+    clear: both;
+    margin: 16px -20px 0;
+    padding: 15px 20px;
+}
+
+.grid_listing .product-listing-content ul.features_list li {
+    color: #8d8d8d;
+    margin-bottom: 3px;
+    width: 50%;
+}
+
+.grid_listing:nth-child(3n+1) {
+    clear: left;
+}
+
+.grid_listing:nth-child(3n) {
+    clear: right;
+}
