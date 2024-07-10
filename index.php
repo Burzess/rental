@@ -40,6 +40,17 @@ error_reporting(0);
   <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <style>
+    .carousel-control.left,
+    .carousel-control.right {
+      background-image: none;
+    }
+
+    #recent-vehicle-slider .carousel-inner .item img {
+      height: 300px;
+      width: auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -60,8 +71,8 @@ error_reporting(0);
         <div class="row">
           <div class="col-md-5 col-md-push-7">
             <div class="banner_content">
-              <h1>Temukan mobil yang tepat untuk Anda.</h1>
-              <p>Kami memiliki lebih dari seribu mobil untuk Anda pilih.</p>
+              <h1>Temukan kendaraan yang tepat untuk Anda.</h1>
+              <p>Kami memiliki lebih dari seribu jenis kendaraan untuk Anda pilih.</p>
               <!-- <a href="#" class="btn">Read More <span class="angle_arrow"><i class="fa fa-angle-right"
                     aria-hidden="true"></i></span></a> -->
             </div>
@@ -77,8 +88,10 @@ error_reporting(0);
   <section class="section-padding gray-bg">
     <div class="container">
       <div class="section-header text-center">
-        <h2>Temukan Mobil Terbaik <span>Untuk Anda</span></h2>
-        <p>Rasakan kenyamanan berkendara tanpa batas di Surabaya dengan layanan sewa mobil kami. Kami menyediakan izin berkendara nasional, dukungan darurat 24 jam, asuransi menyeluruh, serta kemudahan akses parkir di lokasi-lokasi strategis.</p>
+        <h2>Temukan Kendaraan Terbaik <span>Untuk Anda</span></h2>
+        <p>Rasakan kenyamanan berkendara tanpa batas di Surabaya dengan layanan sewa mobil kami. Kami menyediakan izin
+          berkendara nasional, dukungan darurat 24 jam, asuransi menyeluruh, serta kemudahan akses parkir di
+          lokasi-lokasi strategis.</p>
       </div>
       <div class="row">
 
@@ -98,37 +111,54 @@ error_reporting(0);
             if ($query->rowCount() > 0) { ?>
               <div id="recent-vehicle-slider" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                  <?php $cnt = 0;
-                  foreach ($results as $result) { ?>
-                    <div class="item <?php echo ($cnt == 0) ? 'active' : ''; ?>">
-                      <div class="col-list-3">
-                        <div class="recent-car-list">
-                          <div class="car-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image"></a>
-                            <ul>
-                              <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
-                              <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> Model</li>
-                              <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> seats</li>
-                            </ul>
-                          </div>
-                          <div class="car-title-m">
-                            <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>, <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                            <span class="price">Rp. <?php echo htmlentities($result->PricePerDay); ?> /Day</span>
-                          </div>
-                          <div class="inventory_info_m">
-                            <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
+                <div class="carousel-inner" role="listbox">
+                  <?php $cnt = 0; ?>
+                  <div class="item active">
+                    <?php foreach ($results as $result) { ?>
+                      <div class="col-sm-4">
+                        <div class="card">
+                          <div class="recent-car-list">
+                            <div class="car-info-box"> <a
+                                href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
+                                  src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                  class="img-responsive" alt="image"></a>
+                              <ul>
+                                <li><i class="fa fa-car"
+                                    aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
+                                <li><i class="fa fa-calendar"
+                                    aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> Model</li>
+                                <li><i class="fa fa-user"
+                                    aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> seats</li>
+                              </ul>
+                            </div>
+                            <div class="car-title-m">
+                              <h6><a
+                                  href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>,
+                                  <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
+                              <span class="price">Rp. <?php echo htmlentities($result->PricePerDay); ?> /Day</span>
+                            </div>
+                            <div class="inventory_info_m">
+                              <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  <?php $cnt++; } ?>
+                      <?php if (($cnt + 1) % 3 == 0 && $cnt + 1 < count($results)) { ?>
+                      </div>
+                      <div class="item">
+                      <?php } ?>
+                      <?php $cnt++; ?>
+                    <?php } ?>
+                  </div>
                 </div>
                 <!-- Controls -->
-                <a class="left carousel-control" href="#recent-vehicle-slider" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
+                <a class="left carousel-control" href="#recent-vehicle-slider" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#recent-vehicle-slider" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
+                <a class="right carousel-control" href="#recent-vehicle-slider" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
                 </a>
               </div>
             <?php } ?>

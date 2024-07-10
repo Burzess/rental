@@ -73,7 +73,7 @@ if (strlen($_SESSION['login']) == 0) {
     <section class="page-header profile_page">
       <div class="container">
         <div class="page-header_wrap">
-          <div the="page-heading">
+          <div class="page-heading">
             <h1>My Booking</h1>
           </div>
           <ul class="coustom-breadcrumb">

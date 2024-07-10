@@ -52,6 +52,7 @@ ini_set('display_errors', 1);
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://kit.fontawesome.com/cbdc962120.js" crossorigin="anonymous"></script>
+  
 </head>
 
 <body>
@@ -108,7 +109,7 @@ ini_set('display_errors', 1);
                 $params = array_merge($brands, $vehicletypes);
                 $query->execute($params);
               } else {
-                $sql = "SELECT tblvehicles.*, tblbrands.BrandName, tblbrands.id as bid FROM tblvehicles JOIN tblbrands ON tblbrands.id = tblvehicles.VehiclesBrand LIMIT 3";
+                $sql = "SELECT tblvehicles.*, tblbrands.BrandName, tblbrands.id as bid FROM tblvehicles JOIN tblbrands ON tblbrands.id = tblvehicles.VehiclesBrand";
                 $query = $dbh->prepare($sql);
                 $query->execute();
               }
@@ -128,13 +129,14 @@ ini_set('display_errors', 1);
               foreach ($results as $result) { ?>
                 <div class="col-md-4">
                   <div class="card gray-bg" style="height: 100%;">
-                    <div class="card-img-top" style="height: 150px; overflow: hidden;">
+                    <div class="card-img-top img-fluid"
+                      style="height: 150px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                       <img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
-                        style="width: 100%; height: auto; object-fit: cover;" alt="Image" />
+                        style="max-height: 100%; max-width: 100%;" alt="Image" />
                     </div>
                     <div class="product-listing-content" style="float: left; padding: 20px 15px 20px 20px; width: 100%;">
                       <h5><a
-                          href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>,
+                          href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?> 
                           <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
                       <ul class="list-inline" style="margin: 0; padding: 0; list-style: none;">
                         <li class="list-inline-item" style="margin-right: 5px; display: flex; align-items: center;"><i
@@ -346,6 +348,10 @@ ini_set('display_errors', 1);
                 carList.append(vehicleHTML);
               });
             } else {
+              var sortingCountHTML = $('.count');
+              sortingCountHTML.empty();
+              var countHTML = `0 Kendaraan</span>`;
+              sortingCountHTML.append(countHTML);
               carList.append('<h4>Kendaraan tidak tersedia</h4>');
             }
           },

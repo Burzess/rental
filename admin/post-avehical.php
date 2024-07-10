@@ -31,13 +31,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$centrallocking = $_POST['centrallocking'];
 		$crashcensor = $_POST['crashcensor'];
 		$leatherseats = $_POST['leatherseats'];
+		$helmet = $_POST['helmet'];
+		$raincoat = $_POST['raincoat'];
+		$securitylock = $_POST['securitylock'];
+		$extrastorage = $_POST['extrastorage'];
+		$handguard = $_POST['handguard'];
+		$extramirrors = $_POST['extramirrors'];
+		$engineguard = $_POST['engineguard'];
+		$kneeguards = $_POST['kneeguards'];
+		$elbowguards = $_POST['elbowguards'];
 		move_uploaded_file($_FILES["img1"]["tmp_name"], "img/vehicleimages/" . $_FILES["img1"]["name"]);
 		move_uploaded_file($_FILES["img2"]["tmp_name"], "img/vehicleimages/" . $_FILES["img2"]["name"]);
 		move_uploaded_file($_FILES["img3"]["tmp_name"], "img/vehicleimages/" . $_FILES["img3"]["name"]);
 		move_uploaded_file($_FILES["img4"]["tmp_name"], "img/vehicleimages/" . $_FILES["img4"]["name"]);
 		move_uploaded_file($_FILES["img5"]["tmp_name"], "img/vehicleimages/" . $_FILES["img5"]["name"]);
 
-		$sql = "INSERT INTO tblvehicles(VehiclesTitle,VehiclesBrand,VehiclesOverview,PricePerDay,FuelType,ModelYear,SeatingCapacity,VehicleType,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:vehicletitle,:brand,:vehicleoverview,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vehicletype,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
+		$sql = "INSERT INTO tblvehicles(VehiclesTitle,VehiclesBrand,VehiclesOverview,PricePerDay,FuelType,ModelYear,SeatingCapacity,VehicleType,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats,Helmet,RainCoat,SecurityLock,ExtraStorage,HandGuard,ExtraMirrors,EngineGuard,KneeGuards,ElbowGuards) VALUES(:vehicletitle,:brand,:vehicleoverview,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vehicletype,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats,:helmet,:raincoat,:securitylock,:extrastorage,:handguard,:extramirrors,:engineguard,:kneeguards,:elbowguards)";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
 		$query->bindParam(':brand', $brand, PDO::PARAM_STR);
@@ -64,6 +73,15 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->bindParam(':centrallocking', $centrallocking, PDO::PARAM_STR);
 		$query->bindParam(':crashcensor', $crashcensor, PDO::PARAM_STR);
 		$query->bindParam(':leatherseats', $leatherseats, PDO::PARAM_STR);
+		$query->bindParam(':helmet', $helmet, PDO::PARAM_STR);
+		$query->bindParam(':raincoat', $raincoat, PDO::PARAM_STR);
+		$query->bindParam(':securitylock', $securitylock, PDO::PARAM_STR);
+		$query->bindParam(':extrastorage', $extrastorage, PDO::PARAM_STR);
+		$query->bindParam(':handguard', $handguard, PDO::PARAM_STR);
+		$query->bindParam(':extramirrors', $extramirrors, PDO::PARAM_STR);
+		$query->bindParam(':engineguard', $engineguard, PDO::PARAM_STR);
+		$query->bindParam(':kneeguards', $kneeguards, PDO::PARAM_STR);
+		$query->bindParam(':elbowguards', $elbowguards, PDO::PARAM_STR);
 		$query->execute();
 		$lastInsertId = $dbh->lastInsertId();
 		if ($lastInsertId) {
@@ -131,12 +149,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 			<?php include ('includes/leftbar.php'); ?>
 			<div class="content-wrapper">
 				<div class="container-fluid">
-
 					<div class="row">
 						<div class="col-md-12">
-
 							<h2 class="page-title">Post A Vehicle</h2>
-
 							<div class="row">
 								<div class="col-md-12">
 									<div class="panel panel-default">
@@ -146,7 +161,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 											</div><?php } else if ($msg) { ?>
 												<div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?>
 												</div><?php } ?>
-
 										<div class="panel-body">
 											<form method="post" class="form-horizontal" enctype="multipart/form-data">
 												<div class="form-group">
@@ -163,7 +177,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 															<option value=""> Select </option>
 															<?php $ret = "select id,BrandName from tblbrands";
 															$query = $dbh->prepare($ret);
-															//$query->bindParam(':id',$id, PDO::PARAM_STR);
 															$query->execute();
 															$results = $query->fetchAll(PDO::FETCH_OBJ);
 															if ($query->rowCount() > 0) {
@@ -174,7 +187,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 																	</option>
 																<?php }
 															} ?>
-
 														</select>
 													</div>
 												</div>
@@ -213,7 +225,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<label class="col-sm-2 control-label">Vehicle Type<span
 															style="color:red">*</span></label>
 													<div class="col-sm-4">
-														<select class="selectpicker" name="vehicletype" required>
+														<select class="selectpicker" name="vehicletype" required
+															onchange="showAccessories(this.value);">
 															<option value="">Pilih Tipe Kendaraan</option>
 															<option value="Mobil">Mobil</option>
 															<option value="Motor">Motor</option>
@@ -253,7 +266,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														Image 2<span style="color:red">*</span><input type="file"
 															name="img2" required>
 													</div>
-													<div class="col-sm-4">
+													<div the="col-sm-4">
 														Image 3<span style="color:red">*</span><input type="file"
 															name="img3" required>
 													</div>
@@ -280,100 +293,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<div class="panel panel-default">
 										<div class="panel-heading">Accessories</div>
 										<div class="panel-body">
-											<div class="form-group">
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="airconditioner" name="airconditioner"
-															value="1">
-														<label for="airconditioner"> Air Conditioner </label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="powerdoorlocks" name="powerdoorlocks"
-															value="1">
-														<label for="powerdoorlocks"> Power Door Locks </label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="antilockbrakingsys"
-															name="antilockbrakingsys" value="1">
-														<label for="antilockbrakingsys"> AntiLock Braking System </label>
-													</div>
-												</div>
-												<div class="checkbox checkbox-inline">
-													<input type="checkbox" id="brakeassist" name="brakeassist" value="1">
-													<label for="brakeassist"> Brake Assist </label>
-												</div>
+											<div id="accessories">
+												<!-- Accessories will be loaded here based on the vehicle type selected -->
 											</div>
-
-
-
-											<div class="form-group">
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="powersteering" name="powersteering"
-															value="1">
-														<input type="checkbox" id="powersteering" name="powersteering"
-															value="1">
-														<label for="inlineCheckbox5"> Power Steering </label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="driverairbag" name="driverairbag"
-															value="1">
-														<label for="driverairbag">Driver Airbag</label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="passengerairbag" name="passengerairbag"
-															value="1">
-														<label for="passengerairbag"> Passenger Airbag </label>
-													</div>
-												</div>
-												<div class="checkbox checkbox-inline">
-													<input type="checkbox" id="powerwindow" name="powerwindow" value="1">
-													<label for="powerwindow"> Power Windows </label>
-												</div>
-											</div>
-
-
-											<div class="form-group">
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="cdplayer" name="cdplayer" value="1">
-														<label for="cdplayer"> CD Player </label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox h checkbox-inline">
-														<input type="checkbox" id="centrallocking" name="centrallocking"
-															value="1">
-														<label for="centrallocking">Central Locking</label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="crashcensor" name="crashcensor"
-															value="1">
-														<label for="crashcensor"> Crash Sensor </label>
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="checkbox checkbox-inline">
-														<input type="checkbox" id="leatherseats" name="leatherseats"
-															value="1">
-														<label for="leatherseats"> Leather Seats </label>
-													</div>
-												</div>
-											</div>
-
-
-
-
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
 													<button class="btn btn-default" type="reset">Cancel</button>
@@ -381,20 +303,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 														changes</button>
 												</div>
 											</div>
-
 											</form>
 										</div>
 									</div>
 								</div>
 							</div>
-
-
-
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 		</div>
@@ -409,6 +324,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="js/fileinput.js"></script>
 		<script src="js/chartData.js"></script>
 		<script src="js/main.js"></script>
+		<script>
+			function showAccessories(vehicleType) {
+				var accessoriesDiv = document.getElementById('accessories');
+				accessoriesDiv.innerHTML = '';
+				if (vehicleType === 'Motor') {
+					accessoriesDiv.innerHTML = '<div class="row"><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="helmet" name="accessories" value="Helmet"><label for="helmet">Helmet</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="raincoat" name="accessories" value="Raincoat"><label for="raincoat">Raincoat</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="securitylock" name="accessories" value="Security Lock"><label for="securitylock">Security Lock</label></div></div></div><div class="row"><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="extrastorage" name="accessories" value="Extra Storage"><label for="extrastorage">Extra Storage</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="handguard" name="accessories" value="Hand Guard"><label for="handguard">Hand Guard</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="extramirrors" name="accessories" value="Extra Mirrors"><label for="extramirrors">Extra Mirrors</label></div></div></div><div class="row"><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="engineguard" name="accessories" value="Engine Guard"><label for="engineguard">Engine Guard</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="kneeguards" name="accessories" value="Knee Guards"><label for="kneeguards">Knee Guards</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="elbowguards" name="accessories" value="Elbow Guards"><label for="elbowguards">Elbow Guards</label></div></div></div>';
+				} else if (vehicleType === 'Mobil') {
+					accessoriesDiv.innerHTML = '<div class="row"><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="airconditioner" name="airconditioner" value="1"><label for="airconditioner"> Air Conditioner </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1"><label for="powerdoorlocks"> Power Door Locks </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1"><label for="antilockbrakingsys"> AntiLock Braking System </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="brakeassist" name="brakeassist" value="1"><label for="brakeassist"> Brake Assist </label></div></div></div><div class="row"><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powersteering" name="powersteering" value="1"><label for="powersteering"> Power Steering </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="driverairbag" name="driverairbag" value="1"><label for="driverairbag">Driver Airbag</label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="passengerairbag" name="passengerairbag" value="1"><label for="passengerairbag"> Passenger Airbag </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerwindow" name="powerwindow" value="1"><label for="powerwindow"> Power Windows </label></div></div></div><div class="row"><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="cdplayer" name="cdplayer" value="1"><label for="cdplayer"> CD Player </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="centrallocking" name="centrallocking" value="1"><label for="centrallocking">Central Locking</label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="crashcensor" name="crashcensor" value="1"><label for="crashcensor"> Crash Sensor </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="leatherseats" name="leatherseats" value="1"><label for="leatherseats"> Leather Seats </label></div></div></div>';
+				}
+			}
+		</script>
 	</body>
 
 	</html>
