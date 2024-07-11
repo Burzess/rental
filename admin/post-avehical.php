@@ -19,6 +19,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$vimage3 = $_FILES["img3"]["name"];
 		$vimage4 = $_FILES["img4"]["name"];
 		$vimage5 = $_FILES["img5"]["name"];
+		// aksesoris mobil
 		$airconditioner = $_POST['airconditioner'];
 		$powerdoorlocks = $_POST['powerdoorlocks'];
 		$antilockbrakingsys = $_POST['antilockbrakingsys'];
@@ -31,6 +32,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$centrallocking = $_POST['centrallocking'];
 		$crashcensor = $_POST['crashcensor'];
 		$leatherseats = $_POST['leatherseats'];
+		// aksesoris motor
 		$helmet = $_POST['helmet'];
 		$raincoat = $_POST['raincoat'];
 		$securitylock = $_POST['securitylock'];
@@ -122,8 +124,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<!-- Admin Stye -->
 		<link rel="stylesheet" href="css/style.css">
 
-		<script src="js/showaccessories.js"></script>
-
 		<style>
 			.errorWrap {
 				padding: 10px;
@@ -143,7 +143,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 				box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 			}
 		</style>
-
+		
 	</head>
 
 	<body>
@@ -156,6 +156,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 						<div class="col-md-12">
 							<h2 class="page-title">Post A Vehicle</h2>
 							<div class="row">
+								<?php echo '<pre>';
+								print_r($_POST);
+								echo '</pre>'; ?>
 								<div class="col-md-12">
 									<div class="panel panel-default">
 										<div class="panel-heading">Basic Info</div>
@@ -193,7 +196,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 														</select>
 													</div>
 												</div>
-
 												<div class="hr-dashed"></div>
 												<div class="form-group">
 													<label class="col-sm-2 control-label">Vehical Overview<span
@@ -203,7 +205,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 															required></textarea>
 													</div>
 												</div>
-
 												<div class="form-group">
 													<label class="col-sm-2 control-label">Price Per Day<span
 															style="color:red">*</span></label>
@@ -218,12 +219,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 															<option value="Bensin">Bensin</option>
 															<option value="Pertalite">Pertalite</option>
 															<option value="Pertamax">Pertamax</option>
-															<option value="Pertamax Turbo">Pertamax Turbo</option>
 															<option value="Solar">Solar</option>
 														</select>
 													</div>
 												</div>
-
 												<div class="form-group">
 													<label class="col-sm-2 control-label">Vehicle Type<span
 															style="color:red">*</span></label>
@@ -236,7 +235,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 														</select>
 													</div>
 												</div>
-
 												<div class="form-group">
 													<label class="col-sm-2 control-label">Model Year<span
 															style="color:red">*</span></label>
@@ -251,15 +249,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 													</div>
 												</div>
 												<div class="hr-dashed"></div>
-
-
 												<div class="form-group">
 													<div class="col-sm-12">
 														<h4><b>Upload Images</b></h4>
 													</div>
 												</div>
-
-
 												<div class="form-group">
 													<div class="col-sm-4">
 														Image 1 <span style="color:red">*</span><input type="file"
@@ -274,8 +268,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 															name="img3" required>
 													</div>
 												</div>
-
-
 												<div class="form-group">
 													<div class="col-sm-4">
 														Image 4<span style="color:red">*</span><input type="file"
@@ -284,33 +276,104 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<div class="col-sm-4">
 														Image 5<input type="file" name="img5">
 													</div>
-
 												</div>
 												<div class="hr-dashed"></div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!-- <div class="row">
-								<div class="col-md-12"> -->
-									<div class="panel panel-default">
-										<div class="panel-heading">Accessories</div>
-										<div class="panel-body">
-											<div id="accessories">
-												<!-- Accessories will be loaded here based on the vehicle type selected -->
+							<div class="panel panel-default">
+								<div class="panel-heading">Accessories</div>
+								<div class="panel-body">
+									<div id="accessories">
+										<!-- Aksesoris Motor -->
+										<div id="motorAccessories" style="display: none;" class="container">
+											<div class="row">
+												<div class="col-md-4"><input type="checkbox" id="helmet" name="helmet"
+														value="1"><label for="helmet"> Helmet</label></div>
+												<div class="col-md-4"><input type="checkbox" id="raincoat" name="raincoat"
+														value="1"><label for="raincoat"> Raincoat</label></div>
+												<div class="col-md-4"><input type="checkbox" id="securitylock"
+														name="securitylock" value="1"><label for="securitylock"> Security
+														Lock</label></div>
 											</div>
-											<div class="form-group">
-												<div class="col-sm-8 col-sm-offset-2">
-													<button class="btn btn-default" type="reset">Cancel</button>
-													<button class="btn btn-primary" name="submit" type="submit">Save
-														changes</button>
-												</div>
+											<div class="row">
+												<div class="col-md-4"><input type="checkbox" id="extrastorage"
+														name="extrastorage" value="1"><label for="extrastorage"> Extra
+														Storage</label></div>
+												<div class="col-md-4"><input type="checkbox" id="handguard" name="handguard"
+														value="1"><label for="handguard">Hand Guard</label></div>
+												<div class="col-md-4"><input type="checkbox" id="extramirrors"
+														name="extramirrors" value="1"><label for="extramirrors"> Extra
+														Mirrors</label></div>
 											</div>
-											</form>
+											<div class="row">
+												<div class="col-md-4"><input type="checkbox" id="engineguard"
+														name="engineguard" value="1"><label for="engineguard"> Engine
+														Guard</label></div>
+												<div class="col-md-4"><input type="checkbox" id="kneeguards"
+														name="kneeguards" value="1"><label for="kneeguards"> Knee
+														Guards</label></div>
+												<div class="col-md-4"><input type="checkbox" id="elbowguards"
+														name="elbowguards" value="1"><label for="elbowguards"> Elbow
+														Guards</label></div>
+											</div>
+										</div>
+										<!-- Aksesoris Mobil -->
+										<div id="carAccessories" style="display: none;" class="container">
+											<div class="row">
+												<div class="col-md-3"><input type="checkbox" id="airconditioner"
+														name="airconditioner" value="1"><label for="airconditioner">Air
+														Conditioner</label></div>
+												<div class="col-md-3"><input type="checkbox" id="powerdoorlocks"
+														name="powerdoorlocks" value="1"><label for="powerdoorlocks">Power
+														Door Locks</label></div>
+												<div class="col-md-3"><input type="checkbox" id="antilockbrakingsys"
+														name="antilockbrakingsys" value="1"><label
+														for="antilockbrakingsys">Anti-Lock Braking System</label></div>
+												<div class="col-md-3"><input type="checkbox" id="brakeassist"
+														name="brakeassist" value="1"><label for="brakeassist">Brake
+														Assist</label></div>
+											</div>
+											<div class="row">
+												<div class="col-md-3"><input type="checkbox" id="powersteering"
+														name="powersteering" value="1"><label for="powersteering">Power
+														Steering</label></div>
+												<div class="col-md-3"><input type="checkbox" id="driverairbag"
+														name="driverairbag" value="1"><label for="driverairbag">Driver
+														Airbag</label></div>
+												<div class="col-md-3"><input type="checkbox" id="passengerairbag"
+														name="passengerairbag" value="1"><label
+														for="passengerairbag">Passenger Airbag</label></div>
+												<div class="col-md-3"><input type="checkbox" id="powerwindow"
+														name="powerwindow" value="1"><label for="powerwindow">Power
+														Windows</label></div>
+											</div>
+											<div class="row">
+												<div class="col-md-3"><input type="checkbox" id="cdplayer" name="cdplayer"
+														value="1"><label for="cdplayer">CD Player</label></div>
+												<div class="col-md-3"><input type="checkbox" id="centrallocking"
+														name="centrallocking" value="1"><label for="centrallocking">Central
+														Locking</label></div>
+												<div class="col-md-3"><input type="checkbox" id="crashcensor"
+														name="crashcensor" value="1"><label for="crashcensor">Crash
+														Sensor</label></div>
+												<div class="col-md-3"><input type="checkbox" id="leatherseats"
+														name="leatherseats" value="1"><label for="leatherseats">Leather
+														Seats</label></div>
+											</div>
 										</div>
 									</div>
-								<!-- </div>
-							</div> -->
+									<div class="form-group">
+										<div class="col-sm-8 col-sm-offset-2">
+											<button class="btn btn-default" type="reset">Cancel</button>
+											<button class="btn btn-primary" name="submit" type="submit">Save
+												changes</button>
+										</div>
+									</div>
+									</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -327,18 +390,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="js/fileinput.js"></script>
 		<script src="js/chartData.js"></script>
 		<script src="js/main.js"></script>
-		<script>
-			function showAccessories(vehicleType) {
-				var accessoriesDiv = document.getElementById('accessories');
-				accessoriesDiv.innerHTML = '';
-				if (vehicleType === 'Motor') {
-					accessoriesDiv.innerHTML = '<div class="row"><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="helmet" name="accessories" value="Helmet"><label for="helmet">Helmet</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="raincoat" name="accessories" value="Raincoat"><label for="raincoat">Raincoat</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="securitylock" name="accessories" value="Security Lock"><label for="securitylock">Security Lock</label></div></div></div><div class="row"><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="extrastorage" name="accessories" value="Extra Storage"><label for="extrastorage">Extra Storage</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="handguard" name="accessories" value="Hand Guard"><label for="handguard">Hand Guard</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="extramirrors" name="accessories" value="Extra Mirrors"><label for="extramirrors">Extra Mirrors</label></div></div></div><div class="row"><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="engineguard" name="accessories" value="Engine Guard"><label for="engineguard">Engine Guard</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="kneeguards" name="accessories" value="Knee Guards"><label for="kneeguards">Knee Guards</label></div></div><div class="col-sm-4"><div class="checkbox checkbox-inline"><input type="checkbox" id="elbowguards" name="accessories" value="Elbow Guards"><label for="elbowguards">Elbow Guards</label></div></div></div>';
-				} else if (vehicleType === 'Mobil') {
-					accessoriesDiv.innerHTML = '
-						< div class="row" ><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="airconditioner" name="airconditioner" value="1"><label for="airconditioner"> Air Conditioner </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1"><label for="powerdoorlocks"> Power Door Locks </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1"><label for="antilockbrakingsys"> AntiLock Braking System </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="brakeassist" name="brakeassist" value="1"><label for="brakeassist"> Brake Assist </label></div></div></div ><div class="row"><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powersteering" name="powersteering" value="1"><label for="powersteering"> Power Steering </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="driverairbag" name="driverairbag" value="1"><label for="driverairbag">Driver Airbag</label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="passengerairbag" name="passengerairbag" value="1"><label for="passengerairbag"> Passenger Airbag </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerwindow" name="powerwindow" value="1"><label for="powerwindow"> Power Windows </label></div></div></div><div class="row"><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="cdplayer" name="cdplayer" value="1"><label for="cdplayer"> CD Player </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="centrallocking" name="centrallocking" value="1"><label for="centrallocking">Central Locking</label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="crashcensor" name="crashcensor" value="1"><label for="crashcensor"> Crash Sensor </label></div></div><div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="leatherseats" name="leatherseats" value="1"><label for="leatherseats"> Leather Seats </label></div></div></div>';
-				}
-			}
-		</script>
+		<!-- show accessories -->
+		<script src="js/showaccessories.js"></script>
+
 	</body>
 
 	</html>

@@ -27,6 +27,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$centrallocking = isset($_POST['centrallocking']) ? 1 : 0;
 		$crashcensor = isset($_POST['crashcensor']) ? 1 : 0;
 		$leatherseats = isset($_POST['leatherseats']) ? 1 : 0;
+		// ... existing code for motorcycle accessories ...
 		$helmet = isset($_POST['helmet']) ? 1 : 0;
 		$raincoat = isset($_POST['raincoat']) ? 1 : 0;
 		$securitylock = isset($_POST['securitylock']) ? 1 : 0;
@@ -160,9 +161,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 		}
 	</style>
 
-	<!-- <script src="js/showaccessories.js"></script> -->
+	<!-- show accessories -->
+	<script src="js/showaccessories.js"></script>
 
-	</script>
 </head>
 
 <body>
@@ -175,6 +176,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 					<div class="col-md-12">
 						<h2 class="page-title">Edit Vehicle</h2>
 						<div class="row">
+							<?php echo '<pre>';
+							print_r($_POST);
+							echo '</pre>'; ?>
 							<div class="col-md-12">
 								<div class="panel panel-default">
 									<div class="panel-heading">Basic Info</div>
@@ -259,8 +263,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 																	Pertalite</option>
 																<option value="Pertamax" <?php echo ($result->FuelType == 'Pertamax') ? 'selected' : ''; ?>>
 																	Pertamax</option>
-																<option value="Pertamax Turbo" <?php echo ($result->FuelType == 'Pertamax Turbo') ? 'selected' : ''; ?>>
-																	Pertamax Turbo</option>
 																<option value="Solar" <?php echo ($result->FuelType == 'Solar') ? 'selected' : ''; ?>>Solar</option>
 															</select>
 														</div>
@@ -358,67 +360,146 @@ if (strlen($_SESSION['alogin']) == 0) {
 							<div class="panel-heading">Accessories</div>
 							<div class="panel-body">
 								<div id="accessories">
-									<!-- Accessories will be loaded here based on the vehicle type selected -->
-								</div>
-
-								<div class="form-group">
-									<div class="col-sm-8 col-sm-offset-2">
-										<button class="btn btn-primary" name="submit" type="submit">Save
-											changes</button>
+									<div id="accessories">
+										<!-- Aksesoris Motor -->
+										<div id="motorAccessories" style="display: none;" class="container">
+											<div class="row">
+												<div class="col-md-4">
+													<input type="checkbox" id="helmet" name="helmet" value="1" <?php echo $result->Helmet == 1 ? 'checked' : ''; ?>>
+													<label for="helmet">Helmet</label>
+												</div>
+												<div class="col-md-4">
+													<input type="checkbox" id="raincoat" name="raincoat" value="1" <?php echo $result->RainCoat == 1 ? 'checked' : ''; ?>>
+													<label for="raincoat">Raincoat</label>
+												</div>
+												<div class="col-md-4">
+													<input type="checkbox" id="securitylock" name="securitylock"
+														value="1" <?php echo $result->SecurityLock == 1 ? 'checked' : ''; ?>>
+													<label for="securitylock">Security Lock</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<input type="checkbox" id="extrastorage" name="extrastorage"
+														value="1" <?php echo $result->ExtraStorage == 1 ? 'checked' : ''; ?>>
+													<label for="extrastorage">Extra Storage</label>
+												</div>
+												<div class="col-md-4">
+													<input type="checkbox" id="handguard" name="handguard" value="1"
+														<?php echo $result->HandGuard == 1 ? 'checked' : ''; ?>>
+													<label for="handguard">Hand Guard</label>
+												</div>
+												<div class="col-md-4">
+													<input type="checkbox" id="extramirrors" name="extramirrors"
+														value="1" <?php echo $result->ExtraMirrors == 1 ? 'checked' : ''; ?>>
+													<label for="extramirrors">Extra Mirrors</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<input type="checkbox" id="engineguard" name="engineguard" value="1"
+														<?php echo $result->EngineGuard == 1 ? 'checked' : ''; ?>>
+													<label for="engineguard">Engine Guard</label>
+												</div>
+												<div class="col-md-4">
+													<input type="checkbox" id="kneeguards" name="kneeguards" value="1"
+														<?php echo $result->KneeGuards == 1 ? 'checked' : ''; ?>>
+													<label for="kneeguards">Knee Guards</label>
+												</div>
+												<div class="col-md-4">
+													<input type="checkbox" id="elbowguards" name="elbowguards" value="1"
+														<?php echo $result->ElbowGuards == 1 ? 'checked' : ''; ?>>
+													<label for="elbowguards">Elbow Guards</label>
+												</div>
+											</div>
+										</div>
+										<!-- Aksesoris Mobil -->
+										<div id="carAccessories" style="display: none;" class="container">
+											<div class="row">
+												<div class="col-md-3">
+													<input type="checkbox" id="airconditioner" name="airconditioner"
+														value="1" <?php echo $result->AirConditioner == 1 ? 'checked' : ''; ?>>
+													<label for="airconditioner">Air Conditioner</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="powerdoorlocks" name="powerdoorlocks"
+														value="1" <?php echo $result->PowerDoorLocks == 1 ? 'checked' : ''; ?>>
+													<label for="powerdoorlocks">Power Door Locks</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="antilockbrakingsys"
+														name="antilockbrakingsys" value="1" <?php echo $result->AntiLockBrakingSystem == 1 ? 'checked' : ''; ?>>
+													<label for="antilockbrakingsys">Anti-Lock Braking System</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="brakeassist" name="brakeassist" value="1"
+														<?php echo $result->BrakeAssist == 1 ? 'checked' : ''; ?>>
+													<label for="brakeassist">Brake Assist</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-3">
+													<input type="checkbox" id="powersteering" name="powersteering"
+														value="1" <?php echo $result->PowerSteering == 1 ? 'checked' : ''; ?>>
+													<label for="powersteering">Power Steering</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="driverairbag" name="driverairbag"
+														value="1" <?php echo $result->DriverAirbag == 1 ? 'checked' : ''; ?>>
+													<label for="driverairbag">Driver Airbag</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="passengerairbag" name="passengerairbag"
+														value="1" <?php echo $result->PassengerAirbag == 1 ? 'checked' : ''; ?>>
+													<label for="passengerairbag">Passenger Airbag</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="powerwindow" name="powerwindow" value="1"
+														<?php echo $result->PowerWindows == 1 ? 'checked' : ''; ?>>
+													<label for="powerwindow">Power Windows</label>
+												</div>
+											</div>
+											<Se class="row">
+												<div class="col-md-3">
+													<input type="checkbox" id="cdplayer" name="cdplayer" value="1" <?php echo $result->CDPlayer == 1 ? 'checked' : ''; ?>>
+													<label for="cdplayer">CD Player</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="centrallocking" name="centrallocking"
+														value="1" <?php echo $result->CentralLocking == 1 ? 'checked' : ''; ?>>
+													<label for="centrallocking">Central Locking</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="crashcensor" name="crashcensor" value="1"
+														<?php echo $result->CrashSensor == 1 ? 'checked' : ''; ?>>
+													<label for="crashcensor">Crash Sensor</label>
+												</div>
+												<div class="col-md-3">
+													<input type="checkbox" id="leatherseats" name="leatherseats"
+														value="1" <?php echo $result->LeatherSeats == 1 ? 'checked' : ''; ?>>
+													<label for="leatherseats">Leather Seats</label>
+												</div>
+										</div>
 									</div>
 								</div>
 							</div>
+
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-2">
+									<button class="btn btn-primary" name="submit" type="submit">Save
+										changes</button>
+								</div>
+							</div>
 						</div>
-						</form>
 					</div>
+					</form>
 				</div>
 			</div>
-			<!-- End of Form -->
 		</div>
+		<!-- End of Form -->
+	</div>
 	</div>
 
-	<script>
-		function showAccessories(vehicleType) {
-			var accessoriesDiv = document.getElementById('accessories');
-			console.log('vehicleType', vehicleType);
-			accessoriesDiv.innerHTML = '';
-			if (vehicleType === 'Motor') {
-				accessoriesDiv.innerHTML = '<div class="row">' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="airconditioner" name="airconditioner" value="1" ' + (<?php echo $result->AirConditioner; ?> == 1 ? 'checked' : '') + '><label for="airconditioner"> Air Conditioner </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1" ' + (<?php echo $result->PowerDoorLocks; ?> == 1 ? 'checked' : '') + '><label for="powerdoorlocks"> Power Door Locks </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1" ' + (<?php echo $result->AntiLockBrakingSystem; ?> == 1 ? 'checked' : '') + '><label for="antilockbrakingsys"> AntiLock Braking System </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="brakeassist" name="brakeassist" value="1" ' + (<?php echo $result->BrakeAssist; ?> == 1 ? 'checked' : '') + '><label for="brakeassist"> Brake Assist </label></div></div>' +
-					'</div><div class="row">' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powersteering" name="powersteering" value="1" ' + (<?php echo $result->PowerSteering; ?> == 1 ? 'checked' : '') + '><label for="powersteering"> Power Steering </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="driverairbag" name="driverairbag" value="1" ' + (<?php echo $result->DriverAirbag; ?> == 1 ? 'checked' : '') + '><label for="driverairbag">Driver Airbag</label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="passengerairbag" name="passengerairbag" value="1" ' + (<?php echo $result->PassengerAirbag; ?> == 1 ? 'checked' : '') + '><label for="passengerairbag"> Passenger Airbag </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerwindow" name="powerwindow" value="1" ' + (<?php echo $result->PowerWindows; ?> == 1 ? 'checked' : '') + '><label for="powerwindow"> Power Windows </label></div></div>' +
-					'</div><div class="row">' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="cdplayer" name="cdplayer" value="1" ' + (<?php echo $result->CDPlayer; ?> == 1 ? 'checked' : '') + '><label for="cdplayer"> CD Player </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="centrallocking" name="centrallocking" value="1" ' + (<?php echo $result->CentralLocking; ?> == 1 ? 'checked' : '') + '><label for="centrallocking">Central Locking</label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="crashcensor" name="crashcensor" value="1" ' + (<?php echo $result->CrashSensor; ?> == 1 ? 'checked' : '') + '><label for="crashcensor"> Crash Sensor </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="leatherseats" name="leatherseats" value="1" ' + (<?php echo $result->LeatherSeats; ?> == 1 ? 'checked' : '') + '><label for="leatherseats"> Leather Seats </label></div></div>' +
-					'</div>';
-			} else if (vehicleType === 'Mobil') {
-				accessoriesDiv.innerHTML = '<div class="row">' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="airconditioner" name="airconditioner" value="1" ' + (<?php echo $result->AirConditioner; ?> == 1 ? 'checked' : '') + '><label for="airconditioner"> Air Conditioner </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1" ' + (<?php echo $result->PowerDoorLocks; ?> == 1 ? 'checked' : '') + '><label for="powerdoorlocks"> Power Door Locks </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1" ' + (<?php echo $result->AntiLockBrakingSystem; ?> == 1 ? 'checked' : '') + '><label for="antilockbrakingsys"> AntiLock Braking System </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="brakeassist" name="brakeassist" value="1" ' + (<?php echo $result->BrakeAssist; ?> == 1 ? 'checked' : '') + '><label for="brakeassist"> Brake Assist </label></div></div>' +
-					'</div><div class="row">' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powersteering" name="powersteering" value="1" ' + (<?php echo $result->PowerSteering; ?> == 1 ? 'checked' : '') + '><label for="powersteering"> Power Steering </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="driverairbag" name="driverairbag" value="1" ' + (<?php echo $result->DriverAirbag; ?> == 1 ? 'checked' : '') + '><label for="driverairbag">Driver Airbag</label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="passengerairbag" name="passengerairbag" value="1" ' + (<?php echo $result->PassengerAirbag; ?> == 1 ? 'checked' : '') + '><label for="passengerairbag"> Passenger Airbag </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="powerwindow" name="powerwindow" value="1" ' + (<?php echo $result->PowerWindows; ?> == 1 ? 'checked' : '') + '><label for="powerwindow"> Power Windows </label></div></div>' +
-					'</div><div class="row">' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="cdplayer" name="cdplayer" value="1" ' + (<?php echo $result->CDPlayer; ?> == 1 ? 'checked' : '') + '><label for="cdplayer"> CD Player </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="centrallocking" name="centrallocking" value="1" ' + (<?php echo $result->CentralLocking; ?> == 1 ? 'checked' : '') + '><label for="centrallocking">Central Locking</label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="crashcensor" name="crashcensor" value="1" ' + (<?php echo $result->CrashSensor; ?> == 1 ? 'checked' : '') + '><label for="crashcensor"> Crash Sensor </label></div></div>' +
-					'<div class="col-sm-3"><div class="checkbox checkbox-inline"><input type="checkbox" id="leatherseats" name="leatherseats" value="1" ' + (<?php echo $result->LeatherSeats; ?> == 1 ? 'checked' : '') + '><label for="leatherseats"> Leather Seats </label></div></div>' +
-					'</div>';
-			}
-		}
-	</script>
 	<!-- Loading Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
