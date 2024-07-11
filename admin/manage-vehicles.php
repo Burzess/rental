@@ -28,7 +28,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<meta name="author" content="">
 		<meta name="theme-color" content="#3e454c">
 
-		<title>Car Rental Portal |Admin Manage Vehicles </title>
+		<title>Vehicle Rental Portal | Admin Manage Vehicles </title>
 
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -145,20 +145,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<?php $cnt = $cnt + 1;
 												}
 											} ?>
-
 										</tbody>
 									</table>
-
-
-
 								</div>
 							</div>
-
-
-
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
