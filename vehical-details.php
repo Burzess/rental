@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include ('includes/config.php');
@@ -23,40 +22,47 @@ if (isset($_GET['vhid'])) {
 if (isset($_POST['submit'])) {
   $fromdate = $_POST['fromdate'];
   $todate = $_POST['todate'];
-  $message = $_POST['message'];
   $useremail = $_SESSION['login'];
   $totalPrice = $_POST['totalPrice'];
 
-  $fromDateTime = DateTime::createFromFormat('d/m/Y', $fromdate);
-  $toDateTime = DateTime::createFromFormat('d/m/Y', $todate);
+  $fromDateTime = DateTime::createFromFormat('Y-m-d', $fromdate);
+  $toDateTime = DateTime::createFromFormat('Y-m-d', $todate);
+  $currentDateTime = new DateTime();
 
-  $interval = $fromDateTime->diff($toDateTime);
-  $days = $interval->days;
-  $total = $days * $pricePerDay;
-  $status = 0;
-  $vhid = $_GET['vhid'];
-  $sql = "INSERT INTO  tblbooking(userEmail,VehicleId,FromDate,ToDate,message,totalPrice,Status) VALUES(:useremail,:vhid,:fromdate,:todate,:message,:totalPrice,:status)";
-  $query = $dbh->prepare($sql);
-  $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
-  $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
-  $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
-  $query->bindParam(':todate', $todate, PDO::PARAM_STR);
-  $query->bindParam(':message', $message, PDO::PARAM_STR);
-  $query->bindParam(':totalPrice', $total, PDO::PARAM_STR);
-  $query->bindParam(':status', $status, PDO::PARAM_STR);
-  $query->execute();
-  $lastInsertId = $dbh->lastInsertId();
-  if ($lastInsertId) {
-    echo "<script>alert('Booking successfull.');</script>";
+  if ($fromDateTime < $currentDateTime || $toDateTime < $currentDateTime) {
+    echo "<script>alert('Silakan lakukan booking minimal H-1.');</script>";
+    // exit;
   } else {
-    echo "<script>alert('Something went wrong. Please try again');</script>";
+    $interval = $fromDateTime->diff($toDateTime);
+    $days = $interval->days;
+    $total = $days * $pricePerDay;
+    $status = 0;
+    $vhid = $_GET['vhid'];
+    $sql = "INSERT INTO tblbooking(userEmail, VehicleId, FromDate, ToDate, totalPrice, Status) VALUES (:useremail, :vhid, :fromdate, :todate, :totalPrice, :status)";
+    $query = $dbh->prepare($sql);
+    if (!$query) {
+      die("Prepare failed: " . $dbh->errorInfo());
+    }
+    $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+    $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
+    $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
+    $query->bindParam(':todate', $todate, PDO::PARAM_STR);
+    $query->bindParam(':totalPrice', $total, PDO::PARAM_STR);
+    $query->bindParam(':status', $status, PDO::PARAM_STR);
+    if ($query->execute()) {
+      $lastInsertId = $dbh->lastInsertId();
+      if ($lastInsertId) {
+        echo "<script>alert('Booking successful.');</script>";
+      } else {
+        echo "<script>alert('Something went wrong. Please try again');</script>";
+      }
+    } else {
+      echo "<script>alert('Failed to execute booking. Please try again');</script>";
+    }
   }
-
 }
 
 ?>
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -102,7 +108,6 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
   <!-- Start Switcher -->
   <?php include ('includes/colorswitcher.php'); ?>
   <!-- /Switcher -->
@@ -162,7 +167,6 @@ if (isset($_POST['submit'])) {
             <div class="col-md-9">
               <div class="main_features">
                 <ul>
-
                   <li> <i class="fa fa-calendar" aria-hidden="true"></i>
                     <h5><?php echo htmlentities($result->ModelYear); ?></h5>
                     <p>Reg.Year</p>
@@ -196,15 +200,17 @@ if (isset($_POST['submit'])) {
                       <p><?php echo htmlentities($result->VehiclesOverview); ?></p>
                     </div>
 
-                    <?php include('accessories.php'); ?>
-                    
+                    <?php
+                    $vehicleType = $result->VehicleType;
+                    include ('accessories.php');
+                    ?>
+
                   </div>
                 </div>
               </div>
-            <?php }
+            </div>
+          <?php }
   } ?>
-
-        </div>
 
         <!--Side-Bar-->
         <aside class="col-md-3">
@@ -233,10 +239,11 @@ if (isset($_POST['submit'])) {
               </div>
               <?php if ($_SESSION['login']) { ?>
                 <div class="form-group">
-                  <button type="button" class="btn" onclick="openConfirmationModal()">Pesan Sekarang</button>
+                  <button type="button" id="bookNowBtn" class="btn" onclick="openConfirmationModal()">Pesan
+                    Sekarang</button>
                 </div>
               <?php } else { ?>
-                <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login For
+                <a href="#loginform" a class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login For
                   Book</a>
               <?php } ?>
             </form>
@@ -247,31 +254,32 @@ if (isset($_POST['submit'])) {
             aria-labelledby="confirmationModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi Pesanan</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Are you sure you want to book the vehicle from <span id="confirmFromDate"></span> to <span
-                    id="confirmToDate"></span>?
-                  <br>
-                  Total Price: <span id="confirmTotalPrice"></span>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" onclick="submitBookingForm()">Confirm</button>
-                </div>
+                <form method="post">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi Pesanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Apakah Anda yakin ingin memesan kendaraan dari <span id="confirmFromDate"></span> sampai <span
+                      id="confirmToDate"></span>?
+                    <br>
+                    Total Harga: <span id="confirmTotalPrice"></span>
+                    <input type="hidden" name="fromdate" id="hiddenFromDate">
+                    <input type="hidden" name="todate" id="hiddenToDate">
+                    <input type="hidden" name="totalPrice" id="hiddenTotalPrice">
+                    <input type="hidden" name="submit" value="submit">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-
-          <script>
-
-          </script>
-        </aside>
-        <!--/Side-Bar-->
+          <!--/Side-Bar-->
       </div>
 
       <script>
@@ -280,15 +288,22 @@ if (isset($_POST['submit'])) {
           var toDate = document.getElementsByName('todate')[0].value;
           var totalPrice = document.getElementById('totalPriceInput').value;
 
+          // Set text in modal for user confirmation
           document.getElementById('confirmFromDate').innerText = fromDate;
           document.getElementById('confirmToDate').innerText = toDate;
           document.getElementById('confirmTotalPrice').innerText = 'Rp. ' + parseInt(totalPrice).toLocaleString('id-ID');
+
+          // Set hidden input values in modal form
+          document.getElementById('hiddenFromDate').value = fromDate;
+          document.getElementById('hiddenToDate').value = toDate;
+          document.getElementById('hiddenTotalPrice').value = totalPrice;
 
           $('#confirmationModal').modal('show');
         }
 
         function submitBookingForm() {
           document.querySelector('form').submit();
+          console.log('Form submitted');
         }
 
         function calculateTotalPrice() {
@@ -309,11 +324,14 @@ if (isset($_POST['submit'])) {
               var totalPrice = dayDiff * pricePerDay;
               document.getElementById('totalPrice').innerText = 'Total Price: Rp. ' + totalPrice.toLocaleString('id-ID');
               document.getElementById('totalPriceInput').value = totalPrice;
+              document.getElementById('bookNowBtn').disabled = false;
             } else {
               document.getElementById('totalPrice').innerText = 'Total Price: Invalid date range';
+              document.getElementById('bookNowBtn').disabled = true;
             }
           } else {
             document.getElementById('totalPrice').innerText = 'Total Price: ';
+            document.getElementById('bookNowBtn').disabled = true;
           }
         }
       </script>
@@ -324,7 +342,7 @@ if (isset($_POST['submit'])) {
 
       <!--Similar-Cars-->
       <div class="similar_cars">
-        <h3>Similar Cars</h3>
+        <h3>Similar Vehicles</h3>
         <div class="row">
           <?php
           $bid = $_SESSION['brndid'];
